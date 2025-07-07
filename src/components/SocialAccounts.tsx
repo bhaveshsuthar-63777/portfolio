@@ -7,14 +7,14 @@ const SocialAccounts: React.FC = () => {
     {
       name: 'GitHub',
       icon: Github,
-      url: 'https://github.com/bhaveshsuthar',
+      url: 'https://github.com/bhaveshsuthar-63777',
       color: 'hover:bg-gray-800',
       bgColor: 'bg-gray-700'
     },
     {
       name: 'LinkedIn',
       icon: Linkedin,
-      url: 'https://linkedin.com/in/bhavesh-suthar',
+      url: 'https://www.linkedin.com/in/bhavesh-suthar-29a609212/',
       color: 'hover:bg-blue-600',
       bgColor: 'bg-blue-500'
     },
@@ -60,8 +60,8 @@ PROJECTS
 
 CONTACT
 Email: sutharb490@gmail.com
-GitHub: github.com/bhaveshsuthar
-LinkedIn: linkedin.com/in/bhavesh-suthar
+GitHub: github.com/bhaveshsuthar-63777
+LinkedIn: linkedin.com/in/bhavesh-suthar-29a609212
     `;
     
     const blob = new Blob([resumeContent], { type: 'text/plain' });
