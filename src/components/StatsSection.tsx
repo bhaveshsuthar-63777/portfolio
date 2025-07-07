@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedCounter from './AnimatedCounter';
-
 const StatsSection: React.FC = () => {
   const stats = [
     { label: 'Projects Completed', value: 25, suffix: '+' },

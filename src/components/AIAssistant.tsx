@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Send, X, Minimize2, Maximize2 } from 'lucide-react';
+import { Send, X, Minimize2, Maximize2, Sparkles } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -18,7 +18,7 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: "Hi! I'm Bhavesh's AI assistant. I can tell you about his projects, skills, and experience. What would you like to know?",
+      text: "Hello! I'm Bhavesh's personal AI assistant. I can tell you everything about his amazing projects, skills, and experience. What would you like to explore first?",
       isUser: false,
       timestamp: new Date()
     }
@@ -120,11 +120,11 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle }) => {
           <div className="flex items-center justify-between p-4 border-b border-gray-200/50">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-                <Bot size={16} className="text-white" />
+                <Sparkles size={16} className="text-white" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">AI Assistant</h3>
-                <p className="text-xs text-gray-500">Ask me about Bhavesh</p>
+                <h3 className="font-semibold text-gray-800">Bhavesh's AI</h3>
+                <p className="text-xs text-gray-500">Your personal guide</p>
               </div>
             </div>
             <div className="flex items-center space-x-2">
