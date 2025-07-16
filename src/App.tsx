@@ -186,7 +186,7 @@ function App() {
         <div className="container mx-auto px-8 py-4">
           <div className="flex items-center justify-center">
             <div className="flex items-center space-x-8">
-              {tabs.map((tab, index) => (
+              {tabs.map((tab) => (
                 <motion.button
                   key={tab.id}
                   onClick={() => scrollToSection(tab.id)}
