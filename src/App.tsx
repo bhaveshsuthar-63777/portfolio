@@ -6,7 +6,6 @@ import FloatingElements from './components/FloatingElements';
 import InteractiveBackground from './components/InteractiveBackground';
 import WaveBackground from './components/WaveBackground';
 import ProfilePanel from './components/ProfilePanel';
-import TabButton from './components/TabButton';
 import ProjectCard from './components/ProjectCard';
 import SkillCard from './components/SkillCard';
 import AIAssistant from './components/AIAssistant';
