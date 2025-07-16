@@ -12,9 +12,10 @@ interface Message {
 interface AIAssistantProps {
   isOpen: boolean;
   onToggle: () => void;
+  initialQuestion?: string;
 }
 
-const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle }) => {
+const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle, initialQuestion }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -35,6 +36,35 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onToggle }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Handle initial question when AI Assistant opens
+  useEffect(() => {
+    if (isOpen && initialQuestion) {
+      // Add the initial question as a user message
+      const userMessage: Message = {
+        id: Date.now().toString(),
+        text: initialQuestion,
+        isUser: true,
+        timestamp: new Date()
+      };
+
+      setMessages(prev => [...prev, userMessage]);
+      setIsTyping(true);
+
+      // Generate AI response
+      setTimeout(() => {
+        const aiResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: getAIResponse(initialQuestion),
+          isUser: false,
+          timestamp: new Date()
+        };
+        
+        setMessages(prev => [...prev, aiResponse]);
+        setIsTyping(false);
+      }, 1000 + Math.random() * 1000);
+    }
+  }, [isOpen, initialQuestion]);
 
   const getAIResponse = (userMessage: string): string => {
     const message = userMessage.toLowerCase();

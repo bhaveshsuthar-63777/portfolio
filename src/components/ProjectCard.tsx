@@ -1,15 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Code } from 'lucide-react';
+import { Github, Code } from 'lucide-react';
 
 interface ProjectCardProps {
   title: string;
   description: string;
   technologies: string[];
   featured?: boolean;
+  githubUrl?: string;
+  liveDemoUrl?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, featured = false }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, featured = false, githubUrl, liveDemoUrl }) => {
   return (
     <motion.div
       whileHover={{ y: -8, scale: 1.03 }}
@@ -57,26 +59,34 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
           ))}
         </div>
         
-        {/* Action buttons */}
-        <div className="flex space-x-3">
-          <motion.button
+        {/* GitHub Button */}
+        {githubUrl && (
+          <motion.a
+            href={githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+            className="flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl text-sm font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 w-full mb-2"
           >
             <Github size={16} />
-            <span>View Code</span>
-          </motion.button>
-          
-          <motion.button
+            <span>View Code on GitHub</span>
+          </motion.a>
+        )}
+        {/* Live Demo Button */}
+        {liveDemoUrl && (
+          <motion.a
+            href={liveDemoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-4 py-2 bg-white/80 backdrop-blur-sm text-gray-700 rounded-xl text-sm font-semibold hover:bg-white transition-all duration-300 border border-gray-200"
+            className="flex items-center justify-center space-x-2 px-4 py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl text-sm font-semibold hover:from-green-600 hover:to-blue-600 transition-all duration-300 w-full"
           >
-            <ExternalLink size={16} />
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l4.5-2.5a.5.5 0 0 0 0-.814l-4.5-2.5z"/></svg>
             <span>Live Demo</span>
-          </motion.button>
-        </div>
+          </motion.a>
+        )}
       </div>
     </motion.div>
   );

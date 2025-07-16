@@ -2,33 +2,32 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const StarField: React.FC = () => {
-  const stars = Array.from({ length: 50 }, (_, i) => ({
+  const gridPoints = Array.from({ length: 100 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 3 + 1,
-    delay: Math.random() * 4,
+    x: (i % 10) * 10,
+    y: Math.floor(i / 10) * 10,
+    size: Math.random() * 1 + 0.5,
+    delay: Math.random() * 2,
   }));
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {stars.map((star) => (
+      {gridPoints.map((point) => (
         <motion.div
-          key={star.id}
-          className="absolute bg-white rounded-full opacity-60"
+          key={point.id}
+          className="absolute bg-white/10 rounded-full"
           style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
+            left: `${point.x}%`,
+            top: `${point.y}%`,
+            width: `${point.size}px`,
+            height: `${point.size}px`,
           }}
           animate={{
-            opacity: [0.3, 1, 0.3],
-            scale: [1, 1.2, 1],
+            opacity: [0.05, 0.15, 0.05],
           }}
           transition={{
-            duration: 4,
-            delay: star.delay,
+            duration: 6,
+            delay: point.delay,
             repeat: Infinity,
             ease: "easeInOut",
           }}
